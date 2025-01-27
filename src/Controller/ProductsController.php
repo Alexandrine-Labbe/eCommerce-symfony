@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,13 +19,23 @@ class ProductsController extends AbstractController
     {
     }
 
-    #[Route('/products', name: 'product_list')]
+    #[Route('/')]
+    #[Route('/products', name: 'products_list')]
     public function products(): Response
     {
         $products = $this->productRepository->findBy([], ['name' => 'ASC']);
 
         return $this->render('products/list.html.twig', [
             'products' => $products,
+        ]);
+    }
+
+    #[Route('/products/{id}', name: 'products_show')]
+    public function show(Product $product): Response
+    {
+
+        return $this->render('products/product.html.twig', [
+            'product' => $product,
         ]);
     }
 }
