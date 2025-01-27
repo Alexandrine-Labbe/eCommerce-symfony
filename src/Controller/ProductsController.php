@@ -30,7 +30,7 @@ class ProductsController extends AbstractController
         ]);
     }
 
-    #[Route('/products/{id}', name: 'products_show')]
+    #[Route('/products/{product}', name: 'products_show')]
     public function show(Product $product): Response
     {
 

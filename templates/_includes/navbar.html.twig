@@ -1,0 +1,17 @@
+<nav class="navbar text-bg-primary mb-5">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('products_list') }}">eCommerce</a>
+
+        <div class="d-flex">
+            <a href="{{ path('cart') }}" class="p-2 text-reset">
+                <div class="position-relative">
+                    <i class="bi bi-basket2 fs-4"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    9
+                    <span class="visually-hidden">cart items</span>
+                </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</nav>

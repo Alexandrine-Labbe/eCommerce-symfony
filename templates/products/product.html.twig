@@ -6,6 +6,14 @@
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
         <p>Price: {{ product.price }}</p>
+
+        <form action="{{ path('add_to_cart')}}" method="POST">
+            <div class="input-group">
+                <input type="hidden" name="productId" value="{{ product.id }}">
+                <input type="number" class="form-control" name="quantity" aria-label="Quantity" value="1" min="0">
+                <button type="submit" class="btn btn-primary">Add to cart</button>
+            </div>
+        </form>
     </div>
 {% endblock %}
 

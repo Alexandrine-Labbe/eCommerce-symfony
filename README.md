@@ -2,12 +2,14 @@
 
 ## Prérequis
 - PHP 8.3
+- Node 22 (LTS)
 - Composer 2
 - SQLite 3
 
 ## Installation
 ```bash
 composer install
+npm ci
 ```
 
 ## Démarrage
