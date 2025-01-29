@@ -83,7 +83,7 @@ class CartService
                 $cartDetails[] = [
                     'product' => $product,
                     'quantity' => $quantity,
-                    'total' => $product->getPrice() * $quantity,
+                    'total' => $product->getPriceCents() * $quantity,
                 ];
             }
         }
@@ -109,10 +109,10 @@ class CartService
         foreach ($cart as $productId => $_productQuantity) {
             $product = $this->productRepository->find($productId);
             if ($product) {
-                $total += $_productQuantity * $product->getPrice();
+                $total += $_productQuantity * $product->getPriceCents();
             }
         }
 
-        return $total;
+        return $total / 100;
     }
 }

@@ -18,7 +18,7 @@
         {% for cartDetail in cart.cartDetails %}
             <tr>
                 <th>{{ cartDetail.product.name }}</th>
-                <td>{{ cartDetail.product.price }}€</td>
+                <td>{{ cartDetail.product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, 'fr')  }}</td>
                 <td>{{ cartDetail.quantity }}</td>
                 <td>{{ cartDetail.total }}€</td>
                 <td>

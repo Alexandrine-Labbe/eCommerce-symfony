@@ -5,7 +5,7 @@
     <div>
         <h2>{{ product.name }}</h2>
         <p>{{ product.description | nl2br }}</p>
-        <p>Price: {{ product.price }}</p>
+        <p>Price: {{ product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, 'fr')  }}</p>
 
         <form action="{{ path('add_to_cart')}}" method="POST">
             <div class="input-group">

@@ -21,7 +21,7 @@ class Product
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?float $price = null;
+    private ?int $priceCents = null;
 
     public function setId(?int $id): static
     {
@@ -59,15 +59,20 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getPriceCents(): ?float
     {
-        return $this->price;
+        return $this->priceCents;
     }
 
-    public function setPrice(float $price): static
+    public function setPriceCents(float $price): static
     {
-        $this->price = $price;
+        $this->priceCents = $price;
 
         return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->priceCents / 100;
     }
 }

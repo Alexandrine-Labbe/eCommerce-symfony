@@ -19,7 +19,7 @@ Nulla eu elit lectus. Pellentesque in hendrerit nisl. Aliquam ultrices, sem in m
             $product = new Product();
             $product->setName('product ' . $i)
                 ->setDescription(self::LOREM)
-                ->setPrice(rand(1000, 10000) / 100);
+                ->setPriceCents(rand(1000, 10000));
             $manager->persist($product);
         }
 

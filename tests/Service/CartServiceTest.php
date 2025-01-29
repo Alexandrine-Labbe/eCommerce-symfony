@@ -217,13 +217,13 @@ class CartServiceTest extends TestCase
         $product1
             ->setId(1)
             ->setName('Product 1')
-            ->setPrice(10);
+            ->setPriceCents(1000);
 
         $product2 = new Product();
         $product2
             ->setId(2)
             ->setName('Product 2')
-            ->setPrice(15.50);
+            ->setPriceCents(1550);
 
         $this->cartService->addToCart($product1->getId(), 2);
         $this->cartService->addToCart($product2->getId(), 1);
@@ -242,12 +242,12 @@ class CartServiceTest extends TestCase
             [
                 'product' => $product1,
                 'quantity' => 2,
-                'total' => 20,
+                'total' => 2000,
             ],
             [
                 'product' => $product2,
                 'quantity' => 1,
-                'total' => 15.50,
+                'total' => 1550,
             ],
         ], $cartDetails);
     }
@@ -292,13 +292,13 @@ class CartServiceTest extends TestCase
         $product1
             ->setId(1)
             ->setName('Product 1')
-            ->setPrice(10);
+            ->setPriceCents(1000);
 
         $product2 = new Product();
         $product2
             ->setId(2)
             ->setName('Product 2')
-            ->setPrice(15.50);
+            ->setPriceCents(1550);
 
         $this->cartService->addToCart($product1->getId(), 2);
         $this->cartService->addToCart($product2->getId(), 1);
