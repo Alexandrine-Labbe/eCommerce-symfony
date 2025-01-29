@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="J2d1Hat" resname="CART.ADD_SUCCESS">
+        <source>CART.ADD_SUCCESS</source>
+        <target>Un article a bien été ajouté à votre panier</target>
+      </trans-unit>
+      <trans-unit id="BfJ5Zvu" resname="CART.DECREASE_SUCCESS">
+        <source>CART.DECREASE_SUCCESS</source>
+        <target>Un article a bien été déduit de votre panier</target>
+      </trans-unit>
+      <trans-unit id="xJGPWw2" resname="CART.REMOVE_SUCCESS">
+        <source>CART.REMOVE_SUCCESS</source>
+        <target>Un article a bien été supprimé de votre panier</target>
+      </trans-unit>
+      <trans-unit id=".efmiZs" resname="ERROR.TITLE.UNAUTHORIZED">
+        <source>ERROR.TITLE.UNAUTHORIZED</source>
+        <target>Accès non autorisé</target>
+      </trans-unit>
+      <trans-unit id="UtRHY6Y" resname="ERROR.MESSAGE.UNAUTHORIZED">
+        <source>ERROR.MESSAGE.UNAUTHORIZED</source>
+        <target>Vous n'êtes pas autorisé à accéder à cette ressource.</target>
+      </trans-unit>
+      <trans-unit id="V6JJgVU" resname="ERROR.TITLE.FORBIDDEN">
+        <source>ERROR.TITLE.FORBIDDEN</source>
+        <target>Accès non autorisé</target>
+      </trans-unit>
+      <trans-unit id="OqSisKq" resname="ERROR.MESSAGE.FORBIDDEN">
+        <source>ERROR.MESSAGE.FORBIDDEN</source>
+        <target>Vous n'êtes pas autorisé à accéder à cette ressource.</target>
+      </trans-unit>
+      <trans-unit id="ZTBR5n_" resname="ERROR.TITLE.GENERIC">
+        <source>ERROR.TITLE.GENERIC</source>
+        <target>Oups !</target>
+      </trans-unit>
+      <trans-unit id="HmP6Jl5" resname="ERROR.TITLE.NOT_FOUND">
+        <source>ERROR.TITLE.NOT_FOUND</source>
+        <target>Erreur</target>
+      </trans-unit>
+      <trans-unit id="XjXpVUk" resname="ERROR.MESSAGE.NOT_FOUND">
+        <source>ERROR.MESSAGE.NOT_FOUND</source>
+        <target>La ressource que vous recherchez n'existe pas.</target>
+      </trans-unit>
+      <trans-unit id="GOW998v" resname="PRODUCT.ACTIONS.ADD_TO_CART">
+        <source>PRODUCT.ACTIONS.ADD_TO_CART</source>
+        <target>Ajouter au panier</target>
+      </trans-unit>
+      <trans-unit id="HIGs7ix" resname="PRODUCTS.TITLE">
+        <source>PRODUCTS.TITLE</source>
+        <target>Produits</target>
+      </trans-unit>
+      <trans-unit id="e_o5nCJ" resname="PRODUCT.ACTIONS.SHOW">
+        <source>PRODUCT.ACTIONS.SHOW</source>
+        <target>Voir la fiche</target>
+      </trans-unit>
+      <trans-unit id="mXv6zeH" resname="CART.TITLE">
+        <source>CART.TITLE</source>
+        <target>Mon panier</target>
+      </trans-unit>
+      <trans-unit id="CVRSAF4" resname="PRODUCT.NAME">
+        <source>PRODUCT.NAME</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="77aXLKz" resname="PRODUCT.PRICE">
+        <source>PRODUCT.PRICE</source>
+        <target>Prix</target>
+      </trans-unit>
+      <trans-unit id="nlvWEb7" resname="PRODUCT.QUANTITY">
+        <source>PRODUCT.QUANTITY</source>
+        <target>Quantité</target>
+      </trans-unit>
+      <trans-unit id="VUQAwok" resname="PRODUCT.TOTAL">
+        <source>PRODUCT.TOTAL</source>
+        <target>Total</target>
+      </trans-unit>
+      <trans-unit id="eVSOY7a" resname="CART.ACTIONS">
+        <source>CART.ACTIONS</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="nWAee73" resname="PRODUCT.ACTIONS.REMOVE">
+        <source>PRODUCT.ACTIONS.REMOVE</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="za5ct_n" resname="CART.TOTAL">
+        <source>CART.TOTAL</source>
+        <target>Total</target>
+      </trans-unit>
+      <trans-unit id="hC9dkfR" resname="TOAST.SUCCESS">
+        <source>TOAST.SUCCESS</source>
+        <target>Bravo</target>
+      </trans-unit>
+      <trans-unit id="ZLRMz2S" resname="TOAST.ERROR">
+        <source>TOAST.ERROR</source>
+        <target>Oups !</target>
+      </trans-unit>
+      <trans-unit id="dZ8_Eel" resname="CART.CART">
+        <source>CART.CART</source>
+        <target>Produits du panier</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

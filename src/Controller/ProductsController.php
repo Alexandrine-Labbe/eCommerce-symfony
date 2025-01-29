@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -19,9 +20,9 @@ class ProductsController extends AbstractController
     {
     }
 
-    #[Route('/')]
-    #[Route('/products', name: 'products_list')]
-    public function products(): Response
+    #[Route('/{_locale<en|fr>}/')]
+    #[Route('/{_locale<en|fr>}/products', name: 'products_list')]
+    public function products(Request $request): Response
     {
         $products = $this->productRepository->findBy([], ['name' => 'ASC']);
 
@@ -30,7 +31,7 @@ class ProductsController extends AbstractController
         ]);
     }
 
-    #[Route('/products/{product}', name: 'products_show')]
+    #[Route('/{_locale<en|fr>}/products/{product}', name: 'products_show')]
     public function show(Product $product): Response
     {
 

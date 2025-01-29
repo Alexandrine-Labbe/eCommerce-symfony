@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Unauthorized</h1>
-    You are not authorized to access this resource.
+    <h1>{{ 'ERROR.TITLE.FORBIDDEN'|trans }}</h1>
+    {{ 'ERROR.MESSAGE.FORBIDDEN'|trans }}
 {% endblock %}

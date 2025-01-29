@@ -3,15 +3,27 @@
         <a class="navbar-brand" href="{{ path('products_list') }}">eCommerce</a>
 
         <div class="d-flex">
+
+            <div class="nav-item dropdown p-2 text-reset">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-globe fs-4"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), (app.request.attributes.get('_route_params')  | merge({'_locale': 'fr'}))) }}">Français</a></li>
+                    <li><a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), (app.request.attributes.get('_route_params')  | merge({'_locale': 'en'}))) }}">English</a></li>
+                </ul>
+            </div>
+
             <a href="{{ path('cart') }}" class="p-2 text-reset">
                 <div class="position-relative">
                     <i class="bi bi-basket2 fs-4"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    {{ cart.quantity < 99 ? cart.quantity : '99+' }}
-                    <span class="visually-hidden">cart items</span>
-                </span>
+                        {{ cart.quantity < 99 ? cart.quantity : '99+' }}
+                        <span class="visually-hidden">{{ 'CART.CART'|trans }}</span>
+                    </span>
                 </div>
             </a>
         </div>
     </div>
 </nav>
+

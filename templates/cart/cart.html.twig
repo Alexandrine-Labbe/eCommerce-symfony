@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>My cart</h1>
+    <h1>{{ 'CART.TITLE'|trans }}</h1>
 
     <table class="table">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
-            <th>Actions</th>
+            <th>{{ 'PRODUCT.NAME'|trans }}</th>
+            <th>{{ 'PRODUCT.PRICE'|trans }}</th>
+            <th>{{ 'PRODUCT.QUANTITY'|trans }}</th>
+            <th>{{ 'PRODUCT.TOTAL'|trans }}</th>
+            <th>{{ 'CART.ACTIONS'|trans }}</th>
         </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@
         {% for productDetail in cart.cartDetails %}
             <tr>
                 <th>{{ productDetail.product.name }}</th>
-                <td>{{ productDetail.product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, 'fr')  }}</td>
+                <td>{{ productDetail.product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale)  }}</td>
                 <td>
                     <div class="input-group">
                         <a href="{{ path('decrease_to_cart', {product: productDetail.product.id})}}" class="btn btn-outline-secondary" type="button" aria-label="Baisser la quantité d'une unité">-</a>
@@ -28,8 +28,8 @@
                 </td>
                 <td>{{ productDetail.total }}€</td>
                 <td>
-                    <a href="{{ path('products_show', {'product': productDetail.product.id}) }}" class="btn btn-primary">Show</a>
-                    <a href="{{ path('remove_from_cart', {'product': productDetail.product.id}) }}" class="btn btn-danger">Supprimer</a>
+                    <a href="{{ path('products_show', {'product': productDetail.product.id}) }}" class="btn btn-primary">{{ 'PRODUCT.ACTIONS.SHOW'|trans }}</a>
+                    <a href="{{ path('remove_from_cart', {'product': productDetail.product.id}) }}" class="btn btn-danger">{{ 'PRODUCT.ACTIONS.REMOVE'|trans }}</a>
                 </td>
             </tr>
         {% endfor %}
@@ -38,7 +38,7 @@
     </table>
 
 
-    Total : {{ cart.total }}€
+    {{ 'CART.TOTAL'|trans }} : {{ cart.total }}€
 
 
 
