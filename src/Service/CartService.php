@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Repository\ProductRepository;
+use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -18,11 +19,13 @@ class CartService
     )
     { }
 
-    public function addProduct(int $productId, int $quantity = 1): void
+    public function addToCart(int $productId, int $quantity = 1): void
     {
         $session = $this->requestStack->getSession();
         $cart = $session->get(self::CART_KEY, []);
-
+        if ($quantity < 0) {
+            throw new InvalidArgumentException('La valeur doit être un entier positif.');
+        }
         if (isset($cart[$productId])) {
             $cart[$productId] += $quantity;
         } else {
@@ -32,18 +35,24 @@ class CartService
         $session->set(self::CART_KEY, $cart);
     }
 
-    public function removeFromCart(int $productId, int $quantity = 1): void
+    public function decreaseFromCart(int $productId, int $quantity = 1): void
     {
         $session = $this->requestStack->getSession();
         $cart = $session->get(self::CART_KEY, []);
-        $cart[$productId] -= $quantity;
-        if ($cart[$productId] <= 0) {
-            unset($cart[$productId]);
+        if ($quantity < 0) {
+            throw new InvalidArgumentException('La valeur doit être un entier positif.');
         }
+        if (isset($cart[$productId])) {
+            $cart[$productId] -= $quantity;
+            if ($cart[$productId] <= 0) {
+                unset($cart[$productId]);
+            }
+        }
+
         $session->set(self::CART_KEY, $cart);
     }
 
-    public function removeProduct(int $productId): void
+    public function deleteFromCart(int $productId): void
     {
         $session = $this->requestStack->getSession();
         $cart = $session->get(self::CART_KEY, []);
@@ -80,5 +89,30 @@ class CartService
         }
 
         return $cartDetails;
+    }
+
+    public function getQuantity(): int
+    {
+        $cart = $this->getCart();
+        $quantity = 0;
+        foreach ($cart as $productId => $_productQuantity) {
+            $quantity += $_productQuantity;
+        }
+
+        return $quantity;
+    }
+
+    public function getTotal(): float
+    {
+        $cart = $this->getCart();
+        $total = 0;
+        foreach ($cart as $productId => $_productQuantity) {
+            $product = $this->productRepository->find($productId);
+            if ($product) {
+                $total += $_productQuantity * $product->getPrice();
+            }
+        }
+
+        return $total;
     }
 }

@@ -33,7 +33,7 @@ class CartController extends AbstractController
     {
         $productId = (int)$request->request->get('productId');
         $quantity = (int)$request->request->get('quantity');
-        $this->cartService->addProduct($productId, $quantity);
+        $this->cartService->addToCart($productId, $quantity);
 
         return $this->redirectToRoute('products_show', ['product' => $productId]);
     }
