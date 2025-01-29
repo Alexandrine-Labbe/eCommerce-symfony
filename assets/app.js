@@ -5,7 +5,13 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
-require('bootstrap');
+import * as bootstrap from 'bootstrap';
+
+const toastElList = document.querySelectorAll('.toast')
+const toastList = [...toastElList].map(toastEl => {
+    const toast = new bootstrap.Toast(toastEl);
+    toast.show()
+})
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';

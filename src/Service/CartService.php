@@ -83,7 +83,8 @@ class CartService
                 $cartDetails[] = [
                     'product' => $product,
                     'quantity' => $quantity,
-                    'total' => $product->getPriceCents() * $quantity,
+                    'total_cents' => $product->getPriceCents() * $quantity,
+                    'total' => ($product->getPriceCents() * $quantity) / 100,
                 ];
             }
         }

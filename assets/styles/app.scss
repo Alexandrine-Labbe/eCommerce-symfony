@@ -2,6 +2,8 @@ body {
     background-color: lightgray;
 }
 
+$toast-border-radius: 0;
+
 
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-icons";

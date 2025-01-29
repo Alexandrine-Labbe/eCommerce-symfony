@@ -15,14 +15,21 @@
         </thead>
         <tbody>
 
-        {% for cartDetail in cart.cartDetails %}
+        {% for productDetail in cart.cartDetails %}
             <tr>
-                <th>{{ cartDetail.product.name }}</th>
-                <td>{{ cartDetail.product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, 'fr')  }}</td>
-                <td>{{ cartDetail.quantity }}</td>
-                <td>{{ cartDetail.total }}€</td>
+                <th>{{ productDetail.product.name }}</th>
+                <td>{{ productDetail.product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, 'fr')  }}</td>
                 <td>
-                    <a href="{{ path('products_show', {'product': cartDetail.product.id}) }}" class="btn btn-primary">Show</a>
+                    <div class="input-group">
+                        <a href="{{ path('decrease_to_cart', {product: productDetail.product.id})}}" class="btn btn-outline-secondary" type="button" aria-label="Baisser la quantité d'une unité">-</a>
+                        <input type="text" class="form-control" disabled value="{{ productDetail.quantity }}" aria-label="Quantity">
+                        <a href="{{ path('add_to_cart', {product: productDetail.product.id})}}" class="btn btn-outline-secondary" type="button" aria-label="Augmenter la quantité d'une unité">+</a>
+                    </div>
+                </td>
+                <td>{{ productDetail.total }}€</td>
+                <td>
+                    <a href="{{ path('products_show', {'product': productDetail.product.id}) }}" class="btn btn-primary">Show</a>
+                    <a href="{{ path('remove_from_cart', {'product': productDetail.product.id}) }}" class="btn btn-danger">Supprimer</a>
                 </td>
             </tr>
         {% endfor %}

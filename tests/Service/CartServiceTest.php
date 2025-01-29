@@ -242,12 +242,14 @@ class CartServiceTest extends TestCase
             [
                 'product' => $product1,
                 'quantity' => 2,
-                'total' => 2000,
+                'total_cents' => 2000,
+                'total' => 20,
             ],
             [
                 'product' => $product2,
                 'quantity' => 1,
-                'total' => 1550,
+                'total_cents' => 1550,
+                'total' => 15.50,
             ],
         ], $cartDetails);
     }
