@@ -1,4 +1,5 @@
 # eCommerce Symfony
+**Work in progress**
 
 ## Prérequis
 - PHP 8.3
@@ -11,21 +12,23 @@
 composer install
 npm ci
 ```
+### Base de données
+```bash
+php bin/console doctrine:migrations:migrate # exécuter les migrations
+php bin/console doctrine:fixtures:load # charger les fixtures
+```
 
 ## Démarrage
 ```bash
-symfony serve
+npm run dev # Compiler les assets
+symfony serve # Démarrer le serveur local
 ```
+http://localhost:8000/
 
-## Base de données
-Exécuter les migrations
+## Tests
+Nécessite PHPUnit
 ```bash
-php bin/console doctrine:migrations:migrate
-```
-
-Charger les fixtures 
-```bash
-php bin/console doctrine:fixtures:load
+php bin/phpunit
 ```
 
 ## API

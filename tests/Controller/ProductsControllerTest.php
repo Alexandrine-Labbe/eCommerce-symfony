@@ -7,6 +7,8 @@ namespace App\Tests\Controller;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductsControllerTest extends WebTestCase
 {
@@ -52,7 +54,6 @@ class ProductsControllerTest extends WebTestCase
         $client = static::createClient();
 
         $client->request('GET', '/products/NOPE');
-
         $this->assertResponseStatusCodeSame(404);
     }
 }
