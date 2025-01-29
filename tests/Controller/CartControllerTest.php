@@ -14,10 +14,10 @@ class CartControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/cart');
+        $crawler = $client->request('GET', '/fr/cart');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'My cart');
+        $this->assertSelectorTextContains('h1', 'Mon panier');
 
         $this->assertEquals(0, $crawler->filter('tbody tr')->count());
     }
@@ -28,10 +28,10 @@ class CartControllerTest extends WebTestCase
 
        $this->setFakeCart();
 
-        $crawler = $client->request('GET', '/cart');
+        $crawler = $client->request('GET', '/fr/cart');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'My cart');
+        $this->assertSelectorTextContains('h1', 'Mon panier');
 
         $this->assertEquals(2, $crawler->filter('tbody tr')->count());
     }

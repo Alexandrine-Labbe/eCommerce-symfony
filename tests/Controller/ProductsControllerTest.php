@@ -16,10 +16,10 @@ class ProductsControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/fr/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Products');
+        $this->assertSelectorTextContains('h1', 'Produits');
 
         $this->assertEquals(12, $crawler->filter('.product')->count());
     }
@@ -28,10 +28,10 @@ class ProductsControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/fr/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Products');
+        $this->assertSelectorTextContains('h1', 'Produits');
 
         $this->assertEquals(12, $crawler->filter('.product')->count());
     }
@@ -43,7 +43,7 @@ class ProductsControllerTest extends WebTestCase
 
         $product = $entityManager->getRepository(Product::class)->findOneBy([]);
 
-        $client->request('GET', '/products/' . $product->getId());
+        $client->request('GET', '/fr/products/' . $product->getId());
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', $product->getName());
@@ -53,7 +53,7 @@ class ProductsControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', '/products/NOPE');
+        $client->request('GET', '/fr/products/NOPE');
         $this->assertResponseStatusCodeSame(404);
     }
 }
