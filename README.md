@@ -27,3 +27,9 @@ Charger les fixtures
 ```bash
 php bin/console doctrine:fixtures:load
 ```
+
+## API
+Liste des produits
+```bash
+curl http://localhost:8000/api/products.json
+```

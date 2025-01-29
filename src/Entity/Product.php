@@ -59,12 +59,12 @@ class Product
         return $this;
     }
 
-    public function getPriceCents(): ?float
+    public function getPriceCents(): ?int
     {
         return $this->priceCents;
     }
 
-    public function setPriceCents(float $price): static
+    public function setPriceCents(int $price): static
     {
         $this->priceCents = $price;
 
