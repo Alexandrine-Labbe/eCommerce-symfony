@@ -7,7 +7,7 @@
                 <div class="position-relative">
                     <i class="bi bi-basket2 fs-4"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    9
+                    {{ cart.quantity < 99 ? cart.quantity : '99+' }}
                     <span class="visually-hidden">cart items</span>
                 </span>
                 </div>

@@ -6,7 +6,7 @@
     {% for product in products %}
         <div>
             <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
+            <p>{{ product.description | nl2br }}</p>
             <p>Price: {{ product.price }}</p>
             <a href="{{ path('products_show', {'product': product.id}) }}" class="btn btn-primary">Show</a>
         </div>

@@ -15,12 +15,12 @@
         </thead>
         <tbody>
 
-        {% for cartDetail in cartDetails %}
+        {% for cartDetail in cart.cartDetails %}
             <tr>
                 <th>{{ cartDetail.product.name }}</th>
-                <td>{{ cartDetail.product.price }}</td>
+                <td>{{ cartDetail.product.price }}€</td>
                 <td>{{ cartDetail.quantity }}</td>
-                <td>{{ cartDetail.total }}</td>
+                <td>{{ cartDetail.total }}€</td>
                 <td>
                     <a href="{{ path('products_show', {'product': cartDetail.product.id}) }}" class="btn btn-primary">Show</a>
                 </td>
@@ -29,6 +29,9 @@
 
         </tbody>
     </table>
+
+
+    Total : {{ cart.total }}€
 
 
 
