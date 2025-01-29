@@ -20,7 +20,7 @@ class CartController extends AbstractController
     }
 
     #[Route('/cart', name: 'cart')]
-    public function index(): Response
+    public function cart(): Response
     {
         $cartDetails = $this->cartService->getCartDetails();
 
