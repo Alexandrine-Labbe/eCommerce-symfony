@@ -49,7 +49,7 @@
         <source>PRODUCT.ACTIONS.ADD_TO_CART</source>
         <target>Ajouter au panier</target>
       </trans-unit>
-      <trans-unit id="HIGs7ix" resname="PRODUCTS.TITLE">
+      <trans-unit id="sBllfoQ" resname="PRODUCTS.TITLE">
         <source>PRODUCTS.TITLE</source>
         <target>Produits</target>
       </trans-unit>
@@ -100,6 +100,26 @@
       <trans-unit id="dZ8_Eel" resname="CART.CART">
         <source>CART.CART</source>
         <target>Produits du panier</target>
+      </trans-unit>
+      <trans-unit id="hGTnfRo" resname="PRODUCT.DESCRIPTION">
+        <source>PRODUCT.DESCRIPTION</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="CUh1IGJ" resname="SECURITY.LOGIN">
+        <source>SECURITY.LOGIN</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="OyBTjUf" resname="SECURITY.PASSWORD">
+        <source>SECURITY.PASSWORD</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="z7VWnXa" resname="SECURITY.LOG_IN">
+        <source>SECURITY.LOG_IN</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="FopYyOB" resname="SECURITY.LOG_IN_TITLE">
+        <source>SECURITY.LOG_IN_TITLE</source>
+        <target>Connexion</target>
       </trans-unit>
     </body>
   </file>
