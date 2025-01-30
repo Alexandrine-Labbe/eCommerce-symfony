@@ -5,8 +5,8 @@
         <div class="d-flex">
 
             <div class="nav-item dropdown p-2 text-reset">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-globe fs-4"></i>
+                <a class="nav-link dropdown-toggle d-flex align-items-center me-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-globe fs-4 me-2"></i> {{ app.request.locale|locale_name(app.request.locale) }}
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), (app.request.attributes.get('_route_params')  | merge({'_locale': 'fr'}))) }}">Français</a></li>

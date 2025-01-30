@@ -20,9 +20,14 @@ class ProductsController extends AbstractController
     {
     }
 
-    #[Route('/{_locale<en|fr>}/')]
+    #[Route('/')]
+    public function index(): Response
+    {
+        return $this->redirectToRoute('products_list');
+    }
+
     #[Route('/{_locale<en|fr>}/products', name: 'products_list')]
-    public function products(Request $request): Response
+    public function products(): Response
     {
         $products = $this->productRepository->findBy([], ['name' => 'ASC']);
 

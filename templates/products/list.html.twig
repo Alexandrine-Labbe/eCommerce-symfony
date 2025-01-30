@@ -4,7 +4,7 @@
 {% block body %}
     <h1>{{ 'PRODUCTS.TITLE'|trans }}</h1>
     {% for product in products %}
-        <div class="product">
+        <div class="product mb-3">
             <h2>{{ product.name }}</h2>
             <p>{{ product.description | nl2br }}</p>
             <p>{{ product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale)  }}</p>
