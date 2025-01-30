@@ -14,6 +14,7 @@ npm ci
 ```
 ### Base de données
 ```bash
+php bin/console doctrine:database:create # créer la BDD
 php bin/console doctrine:migrations:migrate # exécuter les migrations
 php bin/console doctrine:fixtures:load # charger les fixtures
 ```
@@ -24,6 +25,13 @@ npm run dev # Compiler les assets
 symfony serve # Démarrer le serveur local
 ```
 http://localhost:8000/
+
+### Compiler les asserts
+```bash
+npm run build # Compiler les assets, créer un build de production
+npm run dev # Compiler les assets une fois
+npm run watch # Compiler les assets en watchant les fichiers
+```
 
 ## Tests
 Nécessite PHPUnit
@@ -36,3 +44,13 @@ Liste des produits
 ```bash
 curl http://localhost:8000/api/products.json
 ```
+## Avec docker
+Build :
+ ```shell
+docker build . -t ecommerce-symfony -f .cloud/Dockerfile
+```
+Lancer le container : 
+ ```shell
+docker run --name ecommerce-symfony -e APP_ENV=dev -it -p 8000:80 --rm ecommerce-symfony
+```
+
