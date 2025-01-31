@@ -26,11 +26,12 @@ symfony serve # Démarrer le serveur local
 ```
 http://localhost:8000/
 
-### Compiler les asserts
+### Compiler les assets
 ```bash
 npm run build # Compiler les assets, créer un build de production
 npm run dev # Compiler les assets une fois
 npm run watch # Compiler les assets en watchant les fichiers
+php bin/console asset-map:compile # Copie physiquement les assets dans public/assets/ pour la production
 ```
 
 ## Tests

@@ -2,17 +2,24 @@
 
 
 {% block body %}
-    <div>
-        <h1>{{ product.name }}</h1>
-        <p>{{ product.description | nl2br }}</p>
-        <p>{{ product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale)  }}</p>
 
-        <form action="{{ path('add_to_cart', {product: product.id})}}" method="POST">
-            <div class="input-group">
-                <input type="number" class="form-control" name="quantity" aria-label="Quantity" value="1" min="0">
-                <button type="submit" class="btn btn-primary">{{ 'PRODUCT.ACTIONS.ADD_TO_CART'|trans }}</button>
-            </div>
-        </form>
+    <div class="row">
+        <div class="col-4">
+            <img src="https://placehold.co/100" class="img-fluid h-100" alt="{{ product.name }}">
+        </div>
+        <div class="col-8">
+            <h1 class="mb-3">{{ product.name }}</h1>
+            <p>{{ product.description | nl2br }}</p>
+            <p class="fs-4">{{ product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale) }}</p>
+
+            <form action="{{ path('add_to_cart', {product: product.id}) }}" method="POST">
+                <div class="input-group">
+                    <input type="number" class="form-control" name="quantity" aria-label="Quantity" value="1" min="0">
+                    <button type="submit" class="btn btn-primary">{{ 'PRODUCT.ACTIONS.ADD_TO_CART'|trans }}</button>
+                </div>
+            </form>
+        </div>
     </div>
-{% endblock %}
 
+
+{% endblock %}

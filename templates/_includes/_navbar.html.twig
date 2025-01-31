@@ -1,6 +1,8 @@
-<nav class="navbar text-bg-primary mb-5">
+<nav class="navbar mb-5 sticky-top bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('products_list') }}">eCommerce</a>
+        <a class="navbar-brand" href="{{ path('products_list') }}">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="d-inline-block align-text-top" style="max-width: 100px;">
+        </a>
 
         <div class="d-flex">
 
@@ -16,8 +18,8 @@
 
             <a href="{{ path('cart') }}" class="p-2 text-reset">
                 <div class="position-relative">
-                    <i class="bi bi-basket2 fs-4"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <i class="bi bi-bag fs-4"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
                         {{ cart.quantity < 99 ? cart.quantity : '99+' }}
                         <span class="visually-hidden">{{ 'CART.CART'|trans }}</span>
                     </span>

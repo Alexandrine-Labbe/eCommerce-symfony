@@ -1,45 +1,70 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>{{ 'CART.TITLE'|trans }}</h1>
+    <h1 class="mb-4">{{ 'CART.TITLE'|trans }}</h1>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>{{ 'PRODUCT.NAME'|trans }}</th>
-            <th>{{ 'PRODUCT.PRICE'|trans }}</th>
-            <th>{{ 'PRODUCT.QUANTITY'|trans }}</th>
-            <th>{{ 'PRODUCT.TOTAL'|trans }}</th>
-            <th>{{ 'CART.ACTIONS'|trans }}</th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="d-flex">
+        <div class="flex-grow-1 d-flex">
+            <ul class="list-group list-group-flush flex-grow-1">
+                {% for productDetail in cart.cartDetails %}
+                    <li class="list-group-item">
+                        <div class="d-flex">
+                            <div class="">
+                                <img src="https://placehold.co/100" class="img-fluid h-100"
+                                     alt="{{ productDetail.product.name }}">
+                            </div>
 
-        {% for productDetail in cart.cartDetails %}
-            <tr>
-                <th>{{ productDetail.product.name }}</th>
-                <td>{{ productDetail.product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale)  }}</td>
-                <td>
-                    <div class="input-group">
-                        <a href="{{ path('decrease_to_cart', {product: productDetail.product.id})}}" class="btn btn-outline-secondary" type="button" aria-label="Baisser la quantité d'une unité">-</a>
-                        <input type="text" class="form-control" disabled value="{{ productDetail.quantity }}" aria-label="Quantity">
-                        <a href="{{ path('add_to_cart', {product: productDetail.product.id})}}" class="btn btn-outline-secondary" type="button" aria-label="Augmenter la quantité d'une unité">+</a>
-                    </div>
-                </td>
-                <td>{{ productDetail.total }}€</td>
-                <td>
-                    <a href="{{ path('products_show', {'product': productDetail.product.id}) }}" class="btn btn-primary">{{ 'PRODUCT.ACTIONS.SHOW'|trans }}</a>
-                    <a href="{{ path('remove_from_cart', {'product': productDetail.product.id}) }}" class="btn btn-danger">{{ 'PRODUCT.ACTIONS.REMOVE'|trans }}</a>
-                </td>
-            </tr>
-        {% endfor %}
-
-        </tbody>
-    </table>
+                            <div class="ms-4">
+                                <div class="mb-2">
+                                    <a href="{{ path('products_show', {'product': productDetail.product.id}) }}"
+                                       class="link-dark fs-5 fw-bold">
+                                        {{ productDetail.product.name }}
+                                    </a>
+                                </div>
 
 
-    {{ 'CART.TOTAL'|trans }} : {{ cart.total }}€
+                                <div class="d-flex flex-row">
+
+                                    <div class="input-group me-2">
+                                        <a href="{{ path('decrease_to_cart', {product: productDetail.product.id}) }}"
+                                           class="btn btn-outline-secondary rounded-start-circle border-end-0"
+                                           type="button"
+                                           aria-label="Baisser la quantité d'une unité">-</a>
+
+                                        <div class="form-control border-secondary border-end-0 border-start-0 text-center"
+                                             aria-description="{{ 'PRODUCT.QUANTITY' | trans }}">
+                                            {{ productDetail.quantity }}
+                                        </div>
+
+                                        <a href="{{ path('add_to_cart', {product: productDetail.product.id}) }}"
+                                           class="btn btn-outline-secondary rounded-end-circle border-start-0"
+                                           type="button"
+                                           aria-label="Augmenter la quantité d'une unité">+</a>
+                                    </div>
+
+                                    <a href="{{ path('remove_from_cart', {'product': productDetail.product.id}) }}"
+                                       class="btn btn-light rounded-circle"
+                                       aria-description="{{ 'PRODUCT.ACTIONS.REMOVE'|trans }}">
+                                        <i class="bi bi-trash3"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="vr mx-5"></div>
+        </div>
 
 
+        <div class="fs-5 fw-bold">
+            {{ 'CART.TOTAL'|trans }}
+            : {{ cart.total | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale) }}
+        </div>
+
+    </div>
 
 {% endblock %}
