@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use function Symfony\Component\Translation\t;
@@ -31,6 +32,7 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('name', t('PRODUCT.NAME')),
             TextareaField::new('description', t('PRODUCT.DESCRIPTION')),
             MoneyField::new('priceCents', t('PRODUCT.PRICE'))->setCurrency('EUR'),
+            SlugField::new('slug')->setTargetFieldName('name')->setUnlockConfirmationMessage(t('ADMIN.PRODUCT.SLUG_WARNING'))->hideOnIndex(),
         ];
     }
 

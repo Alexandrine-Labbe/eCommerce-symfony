@@ -121,6 +121,10 @@
         <source>SECURITY.LOG_IN_TITLE</source>
         <target>Connexion</target>
       </trans-unit>
+      <trans-unit id="KV3p2mx" resname="ADMIN.PRODUCT.SLUG_WARNING">
+        <source>ADMIN.PRODUCT.SLUG_WARNING</source>
+        <target>It is highly recommended to use the automatic slugs, but you can customize them</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
