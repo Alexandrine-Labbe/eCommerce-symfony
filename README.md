@@ -1,5 +1,4 @@
 # eCommerce Symfony
-**Work in progress**
 
 ## Prérequis
 - PHP 8.3
@@ -33,6 +32,13 @@ npm run dev # Compiler les assets une fois
 npm run watch # Compiler les assets en watchant les fichiers
 php bin/console asset-map:compile # Copie physiquement les assets dans public/assets/ pour la production
 ```
+## Avec docker
+Lancer le container :
+ ```shell
+docker build . -t ecommerce-symfony -f .cloud/Dockerfile && docker run --name ecommerce-symfony -e APP_ENV=prod -it -p 8000:80 --rm ecommerce-symfony
+OU
+docker compose up --build
+```
 
 ## Tests
 Nécessite PHPUnit
@@ -45,13 +51,7 @@ Liste des produits
 ```bash
 curl http://localhost:8000/api/products.json
 ```
-## Avec docker
-Build :
- ```shell
-docker build . -t ecommerce-symfony -f .cloud/Dockerfile
+## Export CSV
+```bash
+php bin/console app:export-csv [<filename>]
 ```
-Lancer le container : 
- ```shell
-docker run --name ecommerce-symfony -e APP_ENV=dev -it -p 8000:80 --rm ecommerce-symfony
-```
-

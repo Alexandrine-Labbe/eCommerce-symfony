@@ -1,0 +1,28 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .cloud/Dockerfile
+    ports:
+      - "9000:80"
+    environment:
+      - APP_ENV=prod
+    volumes:
+      - shared-volume:/var/www/html
+
+  init:
+    build:
+      context: .
+      dockerfile: .cloud/Dockerfile
+    environment:
+      - APP_ENV=prod
+    restart: "no"
+    depends_on:
+      - app
+    command: /bin/bash -c "./init.sh && exit"
+    volumes:
+      - shared-volume:/var/www/html
+
+volumes:
+  shared-volume:
+    driver: local

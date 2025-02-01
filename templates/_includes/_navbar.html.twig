@@ -1,18 +1,26 @@
 <nav class="navbar mb-2 mb-md-5 sticky-top bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ path('products_list') }}">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="d-inline-block align-text-top" style="max-width: 100px;">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="d-inline-block align-text-top"
+                 style="max-width: 100px;">
         </a>
 
         <div class="d-flex">
 
             <div class="nav-item dropdown p-2 text-reset">
-                <a class="nav-link dropdown-toggle d-flex align-items-center me-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-globe fs-4 me-2"></i> {{ app.request.locale|locale_name(app.request.locale) }}
+                <a class="nav-link dropdown-toggle d-flex align-items-center me-4" href="#" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-globe fs-4 me-2"></i> {{ app.locale|locale_name(app.request.locale) }}
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), (app.request.attributes.get('_route_params')  | merge({'_locale': 'fr'}))) }}">Français</a></li>
-                    <li><a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), (app.request.attributes.get('_route_params')  | merge({'_locale': 'en'}))) }}">English</a></li>
+                    <li>
+                        <a class="dropdown-item"
+                           href="{{ app.current_route ? path(app.current_route, app.current_route_parameters | merge({'_locale': 'fr'})) : path('products_list', {'_locale': 'fr'}) }}">Français</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"
+                           href="{{ app.current_route ? path(app.current_route, app.current_route_parameters | merge({'_locale': 'en'})) : path('products_list', {'_locale': 'en'}) }}">English</a>
+                    </li>
                 </ul>
             </div>
 

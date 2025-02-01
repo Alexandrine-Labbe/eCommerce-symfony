@@ -1,4 +1,4 @@
-FROM node:22 as build_front
+FROM node:22 AS build_front
 
 WORKDIR /app
 
@@ -29,6 +29,8 @@ RUN docker-php-ext-install pdo pdo_sqlite
 
 RUN a2enmod rewrite
 
+COPY init.sh init.sh
+COPY assets assets
 COPY public public
 COPY bin bin
 COPY migrations migrations
@@ -41,18 +43,28 @@ COPY composer.lock .
 COPY .env .env
 
 COPY --from=build_front /app/public/build /var/www/html/public/build
+RUN mkdir -p public/uploads
 
 ENV APP_ENV="prod"
-RUN composer install
-RUN php bin/console cache:clear --env=prod --no-debug
-RUN php bin/console cache:clear --env=dev
-
-RUN chmod 755 -R .
-RUN chmod 777 -R var/
+RUN composer install --no-dev --no-interaction --optimize-autoloader
+RUN php bin/console cache:clear --no-debug
+RUN php bin/console asset-map:compile
 
 RUN cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 COPY .cloud/php.ini $PHP_INI_DIR/conf.d/app.ini
 COPY .cloud/docker.apache.conf /etc/apache2/sites-available/000-default.conf
 
+##RUN chmod 755 -R .
+##RUN chmod -R 777 var
+##RUN chmod 775 -R public/uploads
+#RUN #chown -R www-data:www-data /var/www
+#RUN chown -R www-data:www-data /var/www/html && chmod -R 775 /var/www/html
+#RUN chmod -R 777 var
+RUN chmod 755 -R .
+RUN chmod -R 777 var
+RUN chmod 775 -R public/uploads
 
+RUN chown -R www-data:www-data /var/www/html
+
+USER www-data
 
