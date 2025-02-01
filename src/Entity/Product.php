@@ -5,7 +5,10 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\Slug;
+use Symfony\Component\Validator\Constraints as Assert;
 
+#[Assert\EnableAutoMapping]
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
@@ -22,6 +25,10 @@ class Product
 
     #[ORM\Column]
     private ?int $priceCents = null;
+
+    #[ORM\Column(length: 100, unique: true)]
+    #[Slug(fields: ['name'])]
+    private ?string $slug = null;
 
     public function setId(?int $id): static
     {
@@ -74,5 +81,17 @@ class Product
     public function getPrice(): ?float
     {
         return $this->priceCents / 100;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }

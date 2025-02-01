@@ -7,8 +7,6 @@ namespace App\Tests\Controller;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductsControllerTest extends WebTestCase
 {
@@ -16,24 +14,21 @@ class ProductsControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/fr/');
+        $client->request('GET', '/');
 
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Produits');
-
-        $this->assertEquals(12, $crawler->filter('.product')->count());
+        $this->assertResponseRedirects('/fr/products');
     }
 
     public function testProducts(): void
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/fr/');
+        $crawler = $client->request('GET', '/fr/products');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Produits');
 
-        $this->assertEquals(12, $crawler->filter('.product')->count());
+        $this->assertEquals(12, $crawler->filter('.product-card')->count());
     }
 
     public function testProductShow(): void
@@ -43,7 +38,7 @@ class ProductsControllerTest extends WebTestCase
 
         $product = $entityManager->getRepository(Product::class)->findOneBy([]);
 
-        $client->request('GET', '/fr/products/' . $product->getId());
+        $client->request('GET', '/fr/products/' . $product->getSlug());
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', $product->getName());

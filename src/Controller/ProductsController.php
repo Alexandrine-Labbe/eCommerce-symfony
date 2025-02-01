@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Repository\ProductRepository;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,8 +37,8 @@ class ProductsController extends AbstractController
         ]);
     }
 
-    #[Route('/{_locale<en|fr>}/products/{product}', name: 'products_show')]
-    public function show(Product $product): Response
+    #[Route('/{_locale<en|fr>}/products/{slug}', name: 'products_show')]
+    public function show(#[MapEntity(mapping: ['slug' => 'slug'])] Product $product): Response
     {
 
         return $this->render('products/product.html.twig', [

@@ -12,7 +12,7 @@
             <p>{{ product.description | nl2br }}</p>
             <p class="fs-4">{{ product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale) }}</p>
 
-            <form action="{{ path('add_to_cart', {product: product.id}) }}" method="POST">
+            <form action="{{ path('add_to_cart', {slug: product.slug}) }}" method="POST">
                 <div class="input-group">
                     <input type="number" class="form-control" name="quantity" aria-label="Quantity" value="1" min="0">
                     <button type="submit" class="btn btn-primary">{{ 'PRODUCT.ACTIONS.ADD_TO_CART'|trans }}</button>

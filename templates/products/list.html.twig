@@ -8,30 +8,34 @@
     <div class="row row-cols-2 row-cols-md-4 g-4">
         {% for product in products %}
 
-        <div class="col">
-            <div class="card">
-                <img src="https://placehold.co/100" class="card-img-top" alt="{{ product.name }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
+            <div class="col">
+                <div class="card product-card">
+                    <img src="https://placehold.co/100" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
 
-                    <div class="mb-2">
-                        {{ product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale) }}
-                    </div>
+                        <div class="mb-2">
+                            {{ product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale) }}
+                        </div>
 
-                    <div>
+                        <div>
 
-                        <a href="{{ path('products_show', {'product': product.id}) }}" class="btn btn-primary rounded-circle me-2" aria-description="{{ 'PRODUCT.ACTIONS.SHOW'|trans }}">
-                            <i class="bi bi-search"></i>
-                        </a>
+                            <a href="{{ path('products_show', {slug: product.slug}) }}"
+                               class="btn btn-primary rounded-circle me-2"
+                               aria-description="{{ 'PRODUCT.ACTIONS.SHOW'|trans }}">
+                                <i class="bi bi-search"></i>
+                            </a>
 
-                        <a href="{{ path('add_to_cart', {product: product.id})}}" class="btn btn-light rounded-circle" aria-description="{{ 'PRODUCT.ACTIONS.ADD_TO_CART'|trans }}">
-                            <i class="bi bi-bag-plus"></i>
-                        </a>
+                            <a href="{{ path('add_to_cart', {slug: product.slug}) }}"
+                               class="btn btn-light rounded-circle"
+                               aria-description="{{ 'PRODUCT.ACTIONS.ADD_TO_CART'|trans }}">
+                                <i class="bi bi-bag-plus"></i>
+                            </a>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         {% endfor %}
     </div>
 

@@ -7,7 +7,7 @@
         <div class="flex-grow-1 d-flex">
             <ul class="list-group list-group-flush flex-grow-1">
                 {% for productDetail in cart.cartDetails %}
-                    <li class="list-group-item">
+                    <li class="list-group-item cart-item">
                         <div class="d-flex">
                             <div class="">
                                 <img src="https://placehold.co/100" class="img-fluid h-100"
@@ -16,17 +16,21 @@
 
                             <div class="ms-4">
                                 <div class="mb-2">
-                                    <a href="{{ path('products_show', {'product': productDetail.product.id}) }}"
+                                    <a href="{{ path('products_show', {slug: productDetail.product.slug}) }}"
                                        class="link-dark fs-5 fw-bold">
                                         {{ productDetail.product.name }}
                                     </a>
+                                </div>
+
+                                <div class="mb-2">
+                                    {{ productDetail.product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale) }}
                                 </div>
 
 
                                 <div class="d-flex flex-row">
 
                                     <div class="input-group me-2">
-                                        <a href="{{ path('decrease_to_cart', {product: productDetail.product.id}) }}"
+                                        <a href="{{ path('decrease_to_cart', {slug: productDetail.product.slug}) }}"
                                            class="btn btn-outline-secondary rounded-start-circle border-end-0"
                                            type="button"
                                            aria-label="Baisser la quantité d'une unité">-</a>
@@ -36,13 +40,13 @@
                                             {{ productDetail.quantity }}
                                         </div>
 
-                                        <a href="{{ path('add_to_cart', {product: productDetail.product.id}) }}"
+                                        <a href="{{ path('add_to_cart', {slug: productDetail.product.slug}) }}"
                                            class="btn btn-outline-secondary rounded-end-circle border-start-0"
                                            type="button"
                                            aria-label="Augmenter la quantité d'une unité">+</a>
                                     </div>
 
-                                    <a href="{{ path('remove_from_cart', {'product': productDetail.product.id}) }}"
+                                    <a href="{{ path('remove_from_cart', {slug: productDetail.product.slug}) }}"
                                        class="btn btn-light rounded-circle"
                                        aria-description="{{ 'PRODUCT.ACTIONS.REMOVE'|trans }}">
                                         <i class="bi bi-trash3"></i>

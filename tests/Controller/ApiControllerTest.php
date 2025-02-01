@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ApiControllerTest extends WebTestCase
 {
-    public function testSomething(): void
+    public function testApiProducts(): void
     {
         $client = static::createClient();
 
@@ -32,6 +32,7 @@ class ApiControllerTest extends WebTestCase
             'description' => $products[0]->getDescription(),
             'price' => $products[0]->getPrice(),
             'priceCents' => $products[0]->getPriceCents(),
+            'slug' => $products[0]->getSlug(),
         ];
         $this->assertEquals($firstProductArray, json_decode($json, true)[0]);
     }

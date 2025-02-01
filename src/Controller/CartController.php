@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Service\CartService;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,8 +32,8 @@ class CartController extends AbstractController
         ]);
     }
 
-    #[Route('/{_locale<en|fr>}/cart/add/{product}', name: 'add_to_cart')]
-    public function addToCart(Product $product, Request $request): Response
+    #[Route('/{_locale<en|fr>}/cart/add/{slug}', name: 'add_to_cart')]
+    public function addToCart(#[MapEntity(mapping: ['slug' => 'slug'])] Product $product, Request $request): Response
     {
         $quantity = (int)$request->request->get('quantity', 1);
         $this->cartService->addToCart($product->getId(), $quantity);
@@ -43,8 +44,8 @@ class CartController extends AbstractController
         return $this->redirect($referer);
     }
 
-    #[Route('/{_locale<en|fr>}/cart/decrease/{product}', name: 'decrease_to_cart')]
-    public function decreaseToCart(Product $product, Request $request): Response
+    #[Route('/{_locale<en|fr>}/cart/decrease/{slug}', name: 'decrease_to_cart')]
+    public function decreaseToCart(#[MapEntity(mapping: ['slug' => 'slug'])] Product $product, Request $request): Response
     {
         $quantity = (int)$request->request->get('quantity', 1);
         $this->cartService->decreaseFromCart($product->getId(), $quantity);
@@ -55,8 +56,8 @@ class CartController extends AbstractController
         return $this->redirect($referer);
     }
 
-    #[Route('/{_locale<en|fr>}/cart/remove/{product}', name: 'remove_from_cart')]
-    public function removeFromCart(Product $product, Request $request): Response
+    #[Route('/{_locale<en|fr>}/cart/remove/{slug}', name: 'remove_from_cart')]
+    public function removeFromCart(#[MapEntity(mapping: ['slug' => 'slug'])] Product $product, Request $request): Response
     {
         $this->cartService->deleteFromCart($product->getId());
         $this->addFlash('success', $this->translator->trans('CART.REMOVE_SUCCESS'));

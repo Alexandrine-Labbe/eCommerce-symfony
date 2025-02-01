@@ -33,7 +33,7 @@ class CartControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Mon panier');
 
-        $this->assertEquals(2, $crawler->filter('tbody tr')->count());
+        $this->assertEquals(2, $crawler->filter('.cart-item')->count());
     }
 
     private function setFakeCart()
@@ -42,13 +42,16 @@ class CartControllerTest extends WebTestCase
         $product1
             ->setId(1)
             ->setName('Product 1')
-            ->setPriceCents(1000);
+            ->setPriceCents(1000)
+            ->setSlug('product-1');
 
         $product2 = new Product();
         $product2
             ->setId(2)
             ->setName('Product 2')
-            ->setPriceCents(1550);
+            ->setPriceCents(1550)
+            ->setSlug('product-2');
+
         $mockCartService = $this->createMock(CartService::class);
         $mockCartService->method('getCartDetails')->willReturn([
             [
