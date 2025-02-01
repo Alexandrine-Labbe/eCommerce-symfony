@@ -125,6 +125,10 @@
         <source>ADMIN.PRODUCT.SLUG_WARNING</source>
         <target>Il est fortement recommandé d'utiliser les slugs automatiques, mais vous pouvez les personnaliser</target>
       </trans-unit>
+      <trans-unit id="2xSxmdf" resname="PRODUCT.IMAGE">
+        <source>PRODUCT.IMAGE</source>
+        <target>Image</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

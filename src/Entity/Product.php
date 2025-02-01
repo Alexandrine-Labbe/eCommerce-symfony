@@ -30,6 +30,9 @@ class Product
     #[Slug(fields: ['name'])]
     private ?string $slug = null;
 
+    #[ORM\Column(length: 255, options: ['default' => 'https://placehold.co/100'])]
+    private ?string $image = 'https://placehold.co/100';
+
     public function setId(?int $id): static
     {
         $this->id = $id;
@@ -91,6 +94,18 @@ class Product
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

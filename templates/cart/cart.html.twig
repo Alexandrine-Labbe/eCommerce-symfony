@@ -3,14 +3,14 @@
 {% block body %}
     <h1 class="mb-4">{{ 'CART.TITLE'|trans }}</h1>
 
-    <div class="d-flex">
+    <div class="d-flex flex-column flex-md-row">
         <div class="flex-grow-1 d-flex">
             <ul class="list-group list-group-flush flex-grow-1">
                 {% for productDetail in cart.cartDetails %}
                     <li class="list-group-item cart-item">
                         <div class="d-flex">
                             <div class="">
-                                <img src="https://placehold.co/100" class="img-fluid h-100"
+                                <img src="{{ asset(productDetail.product.image) }}" class="img-fluid h-100" width="100"
                                      alt="{{ productDetail.product.name }}">
                             </div>
 
@@ -60,11 +60,11 @@
                 {% endfor %}
             </ul>
 
-            <div class="vr mx-5"></div>
+            <div class="vr mx-5 d-none d-md-block"></div>
         </div>
 
 
-        <div class="fs-5 fw-bold">
+        <div class="fs-5 fw-bold mt-4 mt-lg-0">
             {{ 'CART.TOTAL'|trans }}
             : {{ cart.total | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale) }}
         </div>

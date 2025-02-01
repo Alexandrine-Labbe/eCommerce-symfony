@@ -33,6 +33,7 @@ class ApiControllerTest extends WebTestCase
             'price' => $products[0]->getPrice(),
             'priceCents' => $products[0]->getPriceCents(),
             'slug' => $products[0]->getSlug(),
+            'image' => $products[0]->getImage(),
         ];
         $this->assertEquals($firstProductArray, json_decode($json, true)[0]);
     }

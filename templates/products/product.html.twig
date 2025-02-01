@@ -3,14 +3,14 @@
 
 {% block body %}
 
-    <div class="row">
-        <div class="col-4">
-            <img src="https://placehold.co/100" class="img-fluid h-100" alt="{{ product.name }}">
+    <div class="row mb-5">
+        <div class="col-12 col-md-4 d-flex">
+            <img src="{{ asset(product.image) }}" class="img-fluid w-100" alt="{{ product.name }}">
         </div>
-        <div class="col-8">
+        <div class="col-12 col-md-8">
             <h1 class="mb-3">{{ product.name }}</h1>
+            <div class="fs-4 mb-2">{{ product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale) }}</div>
             <p>{{ product.description | nl2br }}</p>
-            <p class="fs-4">{{ product.price | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale) }}</p>
 
             <form action="{{ path('add_to_cart', {slug: product.slug}) }}" method="POST">
                 <div class="input-group">
