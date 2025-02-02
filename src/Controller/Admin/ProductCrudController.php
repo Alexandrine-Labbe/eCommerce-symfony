@@ -25,12 +25,14 @@ class ProductCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
+            ->setEntityLabelInSingular(t('PRODUCT.ENTITY_LABEL', [], 'admin'))
+            ->setEntityLabelInPlural(t('PRODUCT.ENTITIES_LABEL', [], 'admin'))
             ->setDefaultSort(['name' => 'ASC']);
     }
 
     public function configureFields(string $pageName): iterable
     {
-        $imageField = ImageField::new('image', t('PRODUCT.IMAGE'))
+        $imageField = ImageField::new('image', t('PRODUCT.IMAGE', [], 'admin'))
             ->setFileConstraints(new Image(mimeTypes: ['image/jpeg', 'image/png', 'image/gif']))
             ->setUploadedFileNamePattern('/uploads/[slug]-[contenthash].[extension]')
             ->setBasePath('/')
@@ -43,11 +45,11 @@ class ProductCrudController extends AbstractCrudController
 
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('name', t('PRODUCT.NAME')),
+            TextField::new('name', t('PRODUCT.NAME', [], 'admin')),
             $imageField,
-            TextareaField::new('description', t('PRODUCT.DESCRIPTION')),
-            MoneyField::new('priceCents', t('PRODUCT.PRICE'))->setCurrency('EUR'),
-            SlugField::new('slug')->setTargetFieldName('name')->setUnlockConfirmationMessage(t('ADMIN.PRODUCT.SLUG_WARNING'))->hideOnIndex(),
+            TextareaField::new('description', t('PRODUCT.DESCRIPTION', [], 'admin')),
+            MoneyField::new('priceCents', t('PRODUCT.PRICE', [], 'admin'))->setCurrency('EUR'),
+            SlugField::new('slug')->setTargetFieldName('name')->setUnlockConfirmationMessage(t('PRODUCT.SLUG_WARNING', [], 'admin'))->hideOnIndex(),
         ];
     }
 

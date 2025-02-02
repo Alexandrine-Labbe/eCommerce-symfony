@@ -24,6 +24,7 @@ class LoginController extends AbstractController
             'username_label' => t('SECURITY.LOGIN'),
             'password_label' => t('SECURITY.PASSWORD'),
             'sign_in_label' => t('SECURITY.LOG_IN'),
+            'favicon_path' => '/favicon.svg',
         ]);
     }
 }

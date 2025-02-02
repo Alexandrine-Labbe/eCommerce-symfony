@@ -44,8 +44,6 @@ Nécessite PHPUnit
 php bin/phpunit
 ```
 
-
-
 ## Utilisation
 ### Docker
 Lancer le container :

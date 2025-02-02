@@ -25,12 +25,13 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('ECommerce');
+            ->setTitle('IBEA - Admin')
+            ->setFaviconPath('favicon.svg');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard(t('page_title.dashboard', [], 'EasyAdminBundle'), 'fa fa-home');
-        yield MenuItem::linkToCrud(t('PRODUCTS.TITLE'), 'fas fa-boxes-stacked', Product::class);
+        yield MenuItem::linkToCrud(t('PRODUCT.ENTITIES_LABEL', [], 'admin'), 'fas fa-boxes-stacked', Product::class);
     }
 }

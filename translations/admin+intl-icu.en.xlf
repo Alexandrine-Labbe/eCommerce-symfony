@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="mKhWZqE" resname="PRODUCT.ENTITY_LABEL">
+        <source>PRODUCT.ENTITY_LABEL</source>
+        <target>Products</target>
+      </trans-unit>
+      <trans-unit id="XhxyX0R" resname="PRODUCT.ENTITIES_LABEL">
+        <source>PRODUCT.ENTITIES_LABEL</source>
+        <target>Product</target>
+      </trans-unit>
+      <trans-unit id="2xSxmdf" resname="PRODUCT.IMAGE">
+        <source>PRODUCT.IMAGE</source>
+        <target>Image</target>
+      </trans-unit>
+      <trans-unit id="CVRSAF4" resname="PRODUCT.NAME">
+        <source>PRODUCT.NAME</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="hGTnfRo" resname="PRODUCT.DESCRIPTION">
+        <source>PRODUCT.DESCRIPTION</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="77aXLKz" resname="PRODUCT.PRICE">
+        <source>PRODUCT.PRICE</source>
+        <target>Price</target>
+      </trans-unit>
+      <trans-unit id="KV3p2mx" resname="PRODUCT.SLUG_WARNING">
+        <source>PRODUCT.SLUG_WARNING</source>
+        <target>It is highly recommended to use the automatic slugs, but you can customize them</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
