@@ -46,6 +46,7 @@ COPY --from=build_front /app/public/build /var/www/html/public/build
 RUN mkdir -p public/uploads
 
 ENV APP_ENV="prod"
+ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN composer install --no-dev --no-interaction --optimize-autoloader
 RUN php bin/console cache:clear --no-debug
 
