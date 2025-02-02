@@ -15,11 +15,11 @@
                 <ul class="dropdown-menu">
                     <li>
                         <a class="dropdown-item"
-                           href="{{ app.current_route ? path(app.current_route, app.current_route_parameters | merge({'_locale': 'fr'})) : path('products_list', {'_locale': 'fr'}) }}">Français</a>
+                           href="{{ path('products_list', {'_locale': 'fr'}) }}">Français</a>
                     </li>
                     <li>
                         <a class="dropdown-item"
-                           href="{{ app.current_route ? path(app.current_route, app.current_route_parameters | merge({'_locale': 'en'})) : path('products_list', {'_locale': 'en'}) }}">English</a>
+                           href="{{ path('products_list', {'_locale': 'en'}) }}">English</a>
                     </li>
                 </ul>
             </div>

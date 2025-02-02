@@ -6,7 +6,9 @@ use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation\Slug;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[Assert\EnableAutoMapping]
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
@@ -32,6 +34,10 @@ class Product
 
     #[ORM\Column(length: 255, options: ['default' => 'https://placehold.co/100'])]
     private ?string $image = 'https://placehold.co/100';
+
+    #[Vich\UploadableField(mapping: 'product_image', fileNameProperty: 'image')]
+    #[Assert\Image(mimeTypes: ['image/jpeg', 'image/png', 'image/gif'])]
+    private ?File $imageFile = null;
 
     public function setId(?int $id): static
     {
@@ -103,9 +109,9 @@ class Product
         return $this->image;
     }
 
-    public function setImage(string $image): static
+    public function setImage(?string $image): static
     {
-        $this->image = $image;
+        $this->image = $image ?? $this->image;
 
         return $this;
     }

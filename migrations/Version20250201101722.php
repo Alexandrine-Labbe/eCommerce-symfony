@@ -14,7 +14,7 @@ final class Version20250201101722 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Add slug column';
     }
 
     public function up(Schema $schema): void

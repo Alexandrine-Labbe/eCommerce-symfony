@@ -12,6 +12,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Validator\Constraints\Image;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FileField;
 use function Symfony\Component\Translation\t;
 
 class ProductCrudController extends AbstractCrudController
@@ -29,16 +30,21 @@ class ProductCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        $imageField = ImageField::new('image', t('PRODUCT.IMAGE'))
+            ->setFileConstraints(new Image(mimeTypes: ['image/jpeg', 'image/png', 'image/gif']))
+            ->setUploadedFileNamePattern('/uploads/[slug]-[contenthash].[extension]')
+            ->setBasePath('/')
+            ->setUploadDir('public/uploads')
+            ->setSortable(false);
+
+        if (Crud::PAGE_EDIT === $pageName) {
+            $imageField->setRequired(false);
+        }
+
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name', t('PRODUCT.NAME')),
-            ImageField::new('image', t('PRODUCT.IMAGE'))
-                ->setFileConstraints(new Image(mimeTypes: ['image/jpeg', 'image/png', 'image/gif']))
-                ->setUploadedFileNamePattern('/uploads/[slug]-[contenthash].[extension]')
-                ->setBasePath('/')
-                ->setUploadDir('public/uploads')
-                ->setRequired(false)
-                ->setSortable(false),
+            $imageField,
             TextareaField::new('description', t('PRODUCT.DESCRIPTION')),
             MoneyField::new('priceCents', t('PRODUCT.PRICE'))->setCurrency('EUR'),
             SlugField::new('slug')->setTargetFieldName('name')->setUnlockConfirmationMessage(t('ADMIN.PRODUCT.SLUG_WARNING'))->hideOnIndex(),

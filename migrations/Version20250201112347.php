@@ -14,7 +14,7 @@ final class Version20250201112347 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Add image column';
     }
 
     public function up(Schema $schema): void

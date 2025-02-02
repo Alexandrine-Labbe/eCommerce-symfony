@@ -7,15 +7,15 @@
     <body>
       <trans-unit id="J2d1Hat" resname="CART.ADD_SUCCESS">
         <source>CART.ADD_SUCCESS</source>
-        <target>Un article a bien été ajouté à votre panier</target>
+        <target>Un article a été ajouté à votre panier</target>
       </trans-unit>
       <trans-unit id="BfJ5Zvu" resname="CART.DECREASE_SUCCESS">
         <source>CART.DECREASE_SUCCESS</source>
-        <target>Un article a bien été déduit de votre panier</target>
+        <target>Un article a été déduit de votre panier</target>
       </trans-unit>
       <trans-unit id="xJGPWw2" resname="CART.REMOVE_SUCCESS">
         <source>CART.REMOVE_SUCCESS</source>
-        <target>Un article a bien été supprimé de votre panier</target>
+        <target>Un article a été supprimé de votre panier</target>
       </trans-unit>
       <trans-unit id=".efmiZs" resname="ERROR.TITLE.UNAUTHORIZED">
         <source>ERROR.TITLE.UNAUTHORIZED</source>
@@ -128,6 +128,14 @@
       <trans-unit id="2xSxmdf" resname="PRODUCT.IMAGE">
         <source>PRODUCT.IMAGE</source>
         <target>Image</target>
+      </trans-unit>
+      <trans-unit id="E8bb4y7" resname="CART.CHECKOUT_NOT_WORKING">
+        <source>CART.CHECKOUT_NOT_WORKING</source>
+        <target>Le paiement n'est pas encore disponible</target>
+      </trans-unit>
+      <trans-unit id="Qs_kWO3" resname="CART.CHECKOUT">
+        <source>CART.CHECKOUT</source>
+        <target>Paiement</target>
       </trans-unit>
     </body>
   </file>

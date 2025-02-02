@@ -14,7 +14,7 @@ final class Version20250129173039 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Change price column type';
     }
 
     public function up(Schema $schema): void

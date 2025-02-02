@@ -129,6 +129,14 @@
         <source>PRODUCT.IMAGE</source>
         <target>Image</target>
       </trans-unit>
+      <trans-unit id="E8bb4y7" resname="CART.CHECKOUT_NOT_WORKING">
+        <source>CART.CHECKOUT_NOT_WORKING</source>
+        <target>Checkout is not working yet</target>
+      </trans-unit>
+      <trans-unit id="Qs_kWO3" resname="CART.CHECKOUT">
+        <source>CART.CHECKOUT</source>
+        <target>Checkout</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

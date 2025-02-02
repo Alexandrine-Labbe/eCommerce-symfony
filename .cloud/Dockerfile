@@ -48,18 +48,11 @@ RUN mkdir -p public/uploads
 ENV APP_ENV="prod"
 RUN composer install --no-dev --no-interaction --optimize-autoloader
 RUN php bin/console cache:clear --no-debug
-RUN php bin/console asset-map:compile
 
 RUN cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 COPY .cloud/php.ini $PHP_INI_DIR/conf.d/app.ini
 COPY .cloud/docker.apache.conf /etc/apache2/sites-available/000-default.conf
 
-##RUN chmod 755 -R .
-##RUN chmod -R 777 var
-##RUN chmod 775 -R public/uploads
-#RUN #chown -R www-data:www-data /var/www
-#RUN chown -R www-data:www-data /var/www/html && chmod -R 775 /var/www/html
-#RUN chmod -R 777 var
 RUN chmod 755 -R .
 RUN chmod -R 777 var
 RUN chmod 775 -R public/uploads

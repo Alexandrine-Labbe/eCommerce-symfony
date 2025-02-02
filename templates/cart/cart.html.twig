@@ -63,10 +63,16 @@
             <div class="vr mx-5 d-none d-md-block"></div>
         </div>
 
+        <div>
+            <div class="fs-5 fw-bold mt-4 mt-lg-0 mb-4">
+                {{ 'CART.TOTAL'|trans }}
+                : {{ cart.total | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale) }}
+            </div>
 
-        <div class="fs-5 fw-bold mt-4 mt-lg-0">
-            {{ 'CART.TOTAL'|trans }}
-            : {{ cart.total | format_currency('EUR', {rounding_mode: 'floor', decimal_always_shown:true}, app.request.locale) }}
+
+            <div class="btn btn-primary" data-bs-toggle="tooltip" data-bs-title="{{ 'CART.CHECKOUT_NOT_WORKING'|trans }}">
+                {{ 'CART.CHECKOUT'|trans }}
+            </div>
         </div>
 
     </div>
